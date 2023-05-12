@@ -1,23 +1,4 @@
 ---
-# doe: "a deer, a female deer"
-# ray: "a drop of golden sun"
-# pi: 3.14159
-# xmas: true
-# french-hens: 3
-# calling-birds:
-#   - huey
-#   - dewey
-#   - louie
-#   - fred
-# xmas-fifth-day:
-#   calling-birds: four
-#   french-hens: 3
-#   golden-rings: 5
-#   partridges:
-#     count: 1
-#     location: "a pear tree"
-#   turtle-doves: two
-
   # General.
   method_string: "SEResNet28-prediction-max"
   model_path: ""
@@ -35,15 +16,11 @@
   are_test_labels_available: True
 
   # Training.
-#  initial_learning_rate: 0.000001
   initial_learning_rate: 0.00001
   number_of_epochs: 300
   patience: 15
 
   # Augmentation.
-  # Add noise: DATA AUGMENTATION FOR ROBUST KEYWORD SPOTTING UNDER PLAYBACK INTERFERENCE
-  # Amplitude augmentation.
-  # SpeechAug
   input_gaussian_noise: 0.000001
   specaug: True
   mixup: False
@@ -53,7 +30,6 @@
   model_configuration:
     input_type_list:
       - logmel_spectrogram
-#      - waveform
     bottom_model: Identity  # [Identity, Wavegram, 1DCNN, 2DCNN]
     bottom_model_configuration:
       placeholder: ""
@@ -74,18 +50,6 @@
       sequence_length: 9
 
   # Data and metadata.
-#  tf_names: ["waveform",
-#             "whinny_single",
-#             "whinny_continuous"]
   tf_names: ["logmel_spectrogram",
              "whinny_single",
              "whinny_continuous"]
-#    tf_names: ["support",
-#               "waveform",
-#               "logmel_spectrogram",
-#               "mfcc",
-#               "segment_id",
-#               "version_id",
-#               "whinny_single",
-#               "whinny_continuous"]
-
