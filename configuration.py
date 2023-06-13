@@ -4,29 +4,31 @@ import yaml
 
 import tensorflow as tf
 
-# The results from 2020 that Jenna also got using VGG16 are using the below partition.
-# PARTITIONS = {"train": ["Luna",  "Other", "Catappa",  "Osa 1", "Osa 2", "Live-recording", "Piro-new calls", "new"],
-#               "devel": ["Tape", "Shady", "Eleanor"],
-#               "test": ["Corcovado Calls", "Will", "Corcovado Round 2 positives"]}
+########################################################################################################################
+# You need to edit these.
+########################################################################################################################
+
+PROJECT_FOLDER = '/data/PycharmProjects/Spider-Monkey-Whinny-Detection'
+
+DATA_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew' + '/Data'
+
+########################################################################################################################
+# Leave as are.
+########################################################################################################################
+
+TFRECORDS_FOLDER = DATA_FOLDER + "/tfrecords_jenna"
+
+OUTPUT_FOLDER = PROJECT_FOLDER + '/Results'
 
 # These are the paper results -- train partition a bit smaller, test partition a bit bigger.
 PARTITIONS = {"train": ["Luna",  "Other", "Catappa",  "Osa 1", "Osa 2", "Live-recording", "Piro-new calls"],
               "devel": ["Tape", "Shady", "Eleanor"],
               "test": ["Corcovado Calls", "new", "Will", "Corcovado Round 2 positives"]}
 
-PROJECT_FOLDER = '/data/PycharmProjects/Spider-Monkey-Whinny-Detection'
-
-DATA_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew' + '/Data'
-
-TFRECORDS_FOLDER = DATA_FOLDER + "/tfrecords_jenna"
-
-OUTPUT_FOLDER = PROJECT_FOLDER + '/Results'
-
 PRAAT_FILE_LIST = sorted([f for f in os.listdir(DATA_FOLDER + '/praat-files') if not f.startswith('.')])
 
 YAML_CONFIGURATION_FOLDER = PROJECT_FOLDER + "/experiment_configurations"
 
-# TODO: Mkdir tfrecords, train, devel, test.
 
 def get_name_to_metadata(tf_names):
     name_to_metadata = dict()

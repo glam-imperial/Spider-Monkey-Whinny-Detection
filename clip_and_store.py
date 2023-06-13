@@ -13,7 +13,6 @@ import wavtools, configuration
 from common import normalise, tfrecord_creator
 
 np.random.seed(0)
-# TODO: Have not verified if the same clip segmentations happen every time exactly.
 # Your positive clips may be slightly time shifted differently than the ones I used in the paper.
 # However, the entire call is in all cases included in any positive clip version.
 # Experimental performance should be almost 100% similar in any case.
@@ -64,19 +63,6 @@ for f in folders:  # A folder here signifies data from a specific site.
                                                      clipped_folder_location=configuration.DATA_FOLDER + '/clipped-negatives/' + partition + '/',
                                                      partition=partition)
     negative_generator_list.append(negative_extend)
-
-########################################################################################################################
-# Negatives
-########################################################################################################################
-# Have not used the Negatives folder for the paper.
-# Was unsure how to report where these pre-clipped samples came from, and are not too many anyways.
-# As such, uncommenting the below does not guarantee correct execution, am not sure if function is up to date.
-# noncall_file = glob.glob(configuration.DATA_FOLDER + '/Negatives/*.WAV')
-# negative_extend = wavtools.generate_negative_examples(noncall_files=noncall_file,
-#                                                       desired_duration_sec=3,
-#                                                       store_folder_location=configuration.DATA_FOLDER + '/clipped-negatives/train/',
-#                                                       partition="train")
-# negative_generator_list.append(negative_extend)
 
 ########################################################################################################################
 # Make tfrecords.

@@ -2,9 +2,7 @@ import statistics
 import os.path
 
 from common.common import load_pickle
-from configuration import PROJECT_FOLDER
-
-OUTPUT_FOLDER = PROJECT_FOLDER + '/Results'
+from configuration import PROJECT_FOLDER, OUTPUT_FOLDER
 
 
 def trial_average(summary_list, name, return_list=False):
@@ -40,7 +38,7 @@ for name in [
     "SEResNet28-avg",
     "SEResNet28-avg-max",
     "Hong-avg",
-    "CNN14_PANN-avg",
+    "CNN14-avg",
     "VGG16-avg",
     "2DCRNN-avg",
     "1DCRNN-avg",
