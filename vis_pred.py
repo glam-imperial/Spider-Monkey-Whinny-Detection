@@ -2,8 +2,8 @@ import statistics
 import os.path
 
 from common.common import load_pickle
+from configuration import PROJECT_FOLDER
 
-PROJECT_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew'
 OUTPUT_FOLDER = PROJECT_FOLDER + '/Results'
 
 
@@ -35,9 +35,10 @@ results_dict = dict()
 
 
 for name in [
-    "ResNet38_PANN-avg",
-    "SEResNet38_PANN-avg",
-    "SEResNet38_PANN-avg-max",
+    "SEResNet28-attention-4",
+    "ResNet28-avg",
+    "SEResNet28-avg",
+    "SEResNet28-avg-max",
     "Hong-avg",
     "CNN14_PANN-avg",
     "VGG16-avg",
@@ -51,32 +52,13 @@ for name in [
     for t in range(10):
         if not os.path.exists(OUTPUT_FOLDER + "/" + name + "/results_summary_trial" + repr(t) + ".pkl"):
             continue
-        # print("Trial: ", t)
         filepath = OUTPUT_FOLDER + "/" + name + "/results_summary_trial" + repr(t) + ".pkl"
         try:
             results_summary = load_pickle(filepath)
         except FileNotFoundError:
             continue
-        # print(results_summary["whinny_single"])
-        results_dict[name] = results_summary["whinny_single"]
-        trial_summaries.append(results_summary["whinny_single"])
-        # print(results_summary["whinny_single"])
-        # try:
-        #     print("Best devel POS AU PR:", results_summary["whinny_single"]["best_devel_pos_au_pr"])
-        # except KeyError:
-        #     pass
-
-        # if True:
-        #     print("Test  Macro AU PR:    ", results_summary["whinny_single"]["test_macro_au_pr"])
-        #     print("Test  Macro AU ROC:   ", results_summary["whinny_single"]["test_macro_au_roc"])
-        #     print("Test  POS AU PR:      ", results_summary["whinny_single"]["test_pos_au_pr"])
-        #     print("Test  NEG AU PR:      ", results_summary["whinny_single"]["test_neg_au_pr"])
-        #     print("Test  Macro F1:       ", results_summary["whinny_single"]["test_macro_f1"])
-        #     print("Test  Macro Recall:   ", results_summary["whinny_single"]["test_macro_recall"])
-        #     print("Test  Macro Precision:", results_summary["whinny_single"]["test_macro_precision"])
-        #     print("Test  POS F1:         ", results_summary["whinny_single"]["test_pos_f1"])
-        #     print("Test  POS Recall:     ", results_summary["whinny_single"]["test_pos_recall"])
-        #     print("Test  POS Precision:  ", results_summary["whinny_single"]["test_pos_precision"])
+        results_dict[name] = results_summary["whinny_single"]["pos_au_pr"]
+        trial_summaries.append(results_summary["whinny_single"]["pos_au_pr"])
 
     print("Trial averages.")
     print("Best devel POS AU PR:", trial_average(trial_summaries, "best_devel_pos_au_pr"))

@@ -14,18 +14,19 @@ PARTITIONS = {"train": ["Luna",  "Other", "Catappa",  "Osa 1", "Osa 2", "Live-re
               "devel": ["Tape", "Shady", "Eleanor"],
               "test": ["Corcovado Calls", "new", "Will", "Corcovado Round 2 positives"]}
 
-PROJECT_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew'
+PROJECT_FOLDER = '/data/PycharmProjects/Spider-Monkey-Whinny-Detection'
 
-DATA_FOLDER = PROJECT_FOLDER + '/Data'
+DATA_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew' + '/Data'
 
-TFRECORDS_FOLDER = DATA_FOLDER + "/tfrecords"
+TFRECORDS_FOLDER = DATA_FOLDER + "/tfrecords_jenna"
 
 OUTPUT_FOLDER = PROJECT_FOLDER + '/Results'
 
 PRAAT_FILE_LIST = sorted([f for f in os.listdir(DATA_FOLDER + '/praat-files') if not f.startswith('.')])
 
-YAML_CONFIGURATION_FOLDER = PROJECT_FOLDER + "/Tool/experiment_configurations"
+YAML_CONFIGURATION_FOLDER = PROJECT_FOLDER + "/experiment_configurations"
 
+# TODO: Mkdir tfrecords, train, devel, test.
 
 def get_name_to_metadata(tf_names):
     name_to_metadata = dict()
