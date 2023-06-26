@@ -47,5 +47,4 @@
 
   # Data and metadata.
   tf_names: ["logmel_spectrogram",
-             "whinny_single",
-             "whinny_continuous"]
+             "whinny_single"]

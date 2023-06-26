@@ -48,5 +48,4 @@
 
   # Data and metadata.
   tf_names: ["waveform",
-             "whinny_single",
-             "whinny_continuous"]
+             "whinny_single"]

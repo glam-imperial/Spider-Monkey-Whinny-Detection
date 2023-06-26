@@ -60,14 +60,9 @@ def get_loss_argument_dict(pred,
     pred_whinny_single = pred["whinny_single"]  # [batch_size, 2]
     true_whinny_single = y_tf_placeholder_dict["whinny_single"]  # [batch_size, 2]
 
-    pred_whinny_continuous = pred["whinny_continuous"]  # [batch_size, seq_len, 2]
-    true_whinny_continuous = y_tf_placeholder_dict["whinny_continuous"]  # [batch_size, seq_len, 2]
-
     loss_argument_dict = dict()
     loss_argument_dict["pred_whinny_single"] = pred_whinny_single
     loss_argument_dict["true_whinny_single"] = true_whinny_single
-    loss_argument_dict["pred_whinny_continuous"] = pred_whinny_continuous
-    loss_argument_dict["true_whinny_continuous"] = true_whinny_continuous
 
     return loss_argument_dict
 
