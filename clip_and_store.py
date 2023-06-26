@@ -21,7 +21,7 @@ for partition in ["train", "devel", "test"]:
     # This is where the positive and negative WAV clips, as well as the TF RECORDS will be stored.
     positive_folder = configuration.DATA_FOLDER + '/clipped-whinnies/' + partition + '/'
     negative_folder = configuration.DATA_FOLDER + '/clipped-negatives/' + partition + '/'
-    tfrecords_folder = configuration.DATA_FOLDER + '/tfrecords/' + partition + '/'
+    tfrecords_folder = configuration.TFRECORDS_FOLDER + '/' + partition + '/'
 
     if not os.path.exists(positive_folder):
         os.makedirs(positive_folder)

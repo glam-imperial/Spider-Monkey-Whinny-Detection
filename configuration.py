@@ -10,7 +10,7 @@ import tensorflow as tf
 
 PROJECT_FOLDER = '/data/PycharmProjects/Spider-Monkey-Whinny-Detection'
 
-DATA_FOLDER = '/data/PycharmProjects/SpiderMonkeysNew' + '/Data'
+DATA_FOLDER = '/data' + '/Data'
 
 ########################################################################################################################
 # Leave as are.
@@ -36,79 +36,62 @@ def get_name_to_metadata(tf_names):
                  "support",
                  "waveform",
                  "logmel_spectrogram",
-                 "mfcc",
                  "segment_id",
                  "version_id",
                  "whinny_single",
-                 "whinny_continuous"
                  ]:
         name_to_metadata[name] = dict()
 
     name_to_metadata["support"]["numpy_shape"] = (48000, 1)
     name_to_metadata["waveform"]["numpy_shape"] = (75, 640)
     name_to_metadata["logmel_spectrogram"]["numpy_shape"] = (300, 128)
-    name_to_metadata["mfcc"]["numpy_shape"] = (300, 80)
     name_to_metadata["segment_id"]["numpy_shape"] = (1, )
     name_to_metadata["version_id"]["numpy_shape"] = (1, )
     name_to_metadata["whinny_single"]["numpy_shape"] = (2, )
-    name_to_metadata["whinny_continuous"]["numpy_shape"] = (48000, 2)
 
     name_to_metadata["support"]["tfrecords_type"] = tf.string
     name_to_metadata["waveform"]["tfrecords_type"] = tf.string
     name_to_metadata["logmel_spectrogram"]["tfrecords_type"] = tf.string
-    name_to_metadata["mfcc"]["tfrecords_type"] = tf.string
     name_to_metadata["segment_id"]["tfrecords_type"] = tf.int64
     name_to_metadata["version_id"]["tfrecords_type"] = tf.int64
     name_to_metadata["whinny_single"]["tfrecords_type"] = tf.string
-    name_to_metadata["whinny_continuous"]["tfrecords_type"] = tf.string
 
     name_to_metadata["support"]["variable_type"] = "support"
     name_to_metadata["waveform"]["variable_type"] = "x"
     name_to_metadata["logmel_spectrogram"]["variable_type"] = "x"
-    name_to_metadata["mfcc"]["variable_type"] = "x"
     name_to_metadata["segment_id"]["variable_type"] = "id"
     name_to_metadata["version_id"]["variable_type"] = "id"
     name_to_metadata["whinny_single"]["variable_type"] = "y"
-    name_to_metadata["whinny_continuous"]["variable_type"] = "y"
 
     name_to_metadata["support"]["shape"] = (-1, 1)
     name_to_metadata["waveform"]["shape"] = (-1, 640)
     name_to_metadata["logmel_spectrogram"]["shape"] = (-1, 128)
-    name_to_metadata["mfcc"]["shape"] = (-1, 80)
     name_to_metadata["segment_id"]["shape"] = (1,)
     name_to_metadata["version_id"]["shape"] = (1,)
     name_to_metadata["whinny_single"]["shape"] = (2,)
-    name_to_metadata["whinny_continuous"]["shape"] = (-1, 2)
 
     name_to_metadata["support"]["tf_dtype"] = tf.float32
     name_to_metadata["waveform"]["tf_dtype"] = tf.float32
     name_to_metadata["logmel_spectrogram"]["tf_dtype"] = tf.float32
-    name_to_metadata["mfcc"]["tf_dtype"] = tf.float32
     name_to_metadata["segment_id"]["tf_dtype"] = tf.int32
     name_to_metadata["version_id"]["tf_dtype"] = tf.int32
     name_to_metadata["whinny_single"]["tf_dtype"] = tf.float32
-    name_to_metadata["whinny_continuous"]["tf_dtype"] = tf.float32
 
     name_to_metadata["support"]["padded_shape"] = (None, 1)
     name_to_metadata["waveform"]["padded_shape"] = (None, 640)
     name_to_metadata["logmel_spectrogram"]["padded_shape"] = (None, 128)
-    name_to_metadata["mfcc"]["padded_shape"] = (None, 80)
     name_to_metadata["segment_id"]["padded_shape"] = (1,)
     name_to_metadata["version_id"]["padded_shape"] = (1,)
     name_to_metadata["whinny_single"]["padded_shape"] = (2,)
-    name_to_metadata["whinny_continuous"]["padded_shape"] = (None, 2)
 
     name_to_metadata["whinny_single"]["number_of_outputs"] = 2
-    name_to_metadata["whinny_continuous"]["number_of_outputs"] = 2
 
     name_to_metadata["support"]["placeholder_shape"] = (None, None, 1)
     name_to_metadata["waveform"]["placeholder_shape"] = (None, None, 640)
     name_to_metadata["logmel_spectrogram"]["placeholder_shape"] = (None, None, 128)
-    name_to_metadata["mfcc"]["placeholder_shape"] = (None, None, 80)
     name_to_metadata["segment_id"]["placeholder_shape"] = (None, 1)
     name_to_metadata["version_id"]["placeholder_shape"] = (None, 1)
     name_to_metadata["whinny_single"]["placeholder_shape"] = (None, 2)
-    name_to_metadata["whinny_continuous"]["placeholder_shape"] = (None, None, 2)
 
     name_to_metadata = {k: name_to_metadata[k] for k in tf_names}
 
